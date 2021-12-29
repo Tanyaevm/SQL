@@ -41,37 +41,37 @@ select * from students
 where created_on='2021-07-12 00:00:00' and name like '%8%';
 --¬ывести пользовател€ у которых id равен 110
 select * from student
-where id='110';
+where id=110;
 --¬ывести пользовател€ у которых id равен 153
 select * from students
-where id='153';
+where id=153;
 --¬ывести пользовател€ у которых id больше 140
 select * from students
-where id>'140';
+where id>140;
 --¬ывести пользовател€ у которых id меньше 130
 select * from students
-where id<'130';
+where id<130;
 --¬ывести пользовател€ у которых id меньше 127 или больше 188
 select * from students
-where id<'127' or id<'188';
+where id<127 or id<188;
 --¬ывести пользовател€ у которых id меньше либо равно 137
 select * from students
-where id<'137' or id='137';
+where id<137 or id=137;
 --¬ывести пользовател€ у которых id больше либо равно 137
 select * from students
-where id>'137' or id='137';
+where id>137 or id=137;
 --¬ывести пользовател€ у которых id больше 180 но меньше 190
 select * from students
-where id>'180' or id<'190';
+where id>180 or id<190;
 --¬ывести пользовател€ у которых id между 180 и 190
 select * from students
 where id between 180 and 190;
 --¬ывести пользователей где password равен 12333, 1m313, 123313
 select * from students 
-where password='12333' and password='1m313' and password='1233313';
+where password in ('12333', '1m313', '123313');
 --¬ывести пользователей где created_on равен 2020-10-03 00:00:00, 2021-05-19 00:00:00, 2021-03-26 00:00:00
 select *from students
-where created_on='2020-10-03 00:00:00' and created_on='2021-05-19 00:00:00' and created_on='2021-03-26 00:00:00';
+where created_on in ('2020-10-03 00:00:00', '2021-05-19 00:00:00', '2021-03-26 00:00:00');
 --¬ывести минимальный id 
 select min(id) as min_id
 from students;
