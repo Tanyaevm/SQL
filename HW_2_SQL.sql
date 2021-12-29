@@ -77,7 +77,6 @@ values ('Katya'),
 	   ('Olya'),
 	   ('Olga');
 
---drop table employees;
 
 create table salary_1(
 	id serial primary key,
@@ -104,7 +103,6 @@ values ('1000'),
 	   ('2400'),
 	   ('2500');
 	   
---drop table salary_1;
 	  
 create table employee_salary(
 	id serial primary key,
@@ -112,7 +110,6 @@ create table employee_salary(
 	salary_id int not null
 );
 
---drop table employee_salary;
 
 select * from employee_salary;
 
@@ -191,7 +188,7 @@ values ('Junior Python developer'),
        ('Junior Automation QA engineer'),
        ('Middle Automation QA engineer'),
        ('Senior Automation QA engineer');
---drop table roles_1;
+
 select * from roles_1;
 
 create table roles_employee(
@@ -201,7 +198,7 @@ create table roles_employee(
 	foreign key (employee_id)
 		references employees(id),
 	foreign key (role_id)
-		references roles(id)
+		references roles_1(id)
 );
 
 select * from roles_employee;
@@ -213,7 +210,7 @@ values (1, 1),
        (7, 6),
        (8, 4),
        (9, 1),
-       (2, 2),
+       (2, 20),
        (3, 11),
        (10, 6),
        (12, 8),
@@ -226,7 +223,7 @@ values (1, 1),
        (25, 8),
        (27, 5),
        (29, 4),
-       (31, 2),
+       (31, 12),
        (33, 7),
        (30, 9),
        (36, 1),
@@ -243,9 +240,9 @@ values (1, 1),
        (57, 14),
        (59, 15),
        (60, 15),
-       (61, 4),
-       (65, 8),
-       (66, 6),
-       (70, 1);
+       (61, 14),
+       (65, 18),
+       (66, 16),
+       (70, 17);
        
 select * from roles_employee;
