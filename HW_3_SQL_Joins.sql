@@ -1,3 +1,4 @@
+
 --1. Вывести всех работников чьи зарплаты есть в базе, вместе с зарплатами.
 
 select * from salary_1;
@@ -259,7 +260,7 @@ select employee_name, salary_1.monthly_salary, roles_1.role_name from emp_sal_ro
 	on sal_id = salary_1.id
 	join roles_1
 	on rol_id = roles_1.id
-		where role_name like '%Senior Java%';
+		where role_name like '%Senior Java %';
 
 --20. Вывести зарплаты Junior QA инженеров
 
