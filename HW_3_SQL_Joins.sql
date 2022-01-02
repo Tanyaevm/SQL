@@ -377,7 +377,7 @@ select employee_name, role_name, salary_1.monthly_salary from emp_sal_rol
 		where salary_1.monthly_salary<2300
 			order by (salary_1.monthly_salary) asc;
 
---32. Вывести имена, должности и ЗП всех специалистов по возрастанию у специалистов у которых ЗП равна 1100, 1500, 2000
+--Вывести имена, должности и ЗП всех специалистов по возрастанию у специалистов у которых ЗП равна 1100, 1500, 2000
 		
 		select employee_name, role_name, salary_1.monthly_salary from emp_sal_rol
 	join employees
