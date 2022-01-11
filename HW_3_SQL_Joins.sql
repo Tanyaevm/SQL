@@ -280,90 +280,95 @@ select max(salary_1.monthly_salary) as max_salary from salary_1
 
 --25. Вывести количество QA инженеров
 	
-select count(role_name) as count_QA from salary_1
-	join employee_salary
-	on salary_1.id = employee_salary.salary_id 
-	join employees
-	on employees.id = employee_salary.employee_id
+select count(role_name) as count_QA from roles_1
 	join roles_employee
-	on roles_employee.employee_id = employees.id 
-	join roles_1
-	on roles_1.id = roles_employee.role_id
+	on roles_1.id = roles_employee.role_id 
+	join employees
+	on employees.id = roles_employee.employee_id 
 		where role_name like '%QA%';
 	
 --26. Вывести количество Middle специалистов.
 
-select count(role_name) as count_Middle from salary_1
-	join employee_salary
-	on salary_1.id = employee_salary.salary_id 
-	join employees
-	on employees.id = employee_salary.employee_id
+select count(role_name) as count_Middle from roles_1
 	join roles_employee
-	on roles_employee.employee_id = employees.id 
-	join roles_1
-	on roles_1.id = roles_employee.role_id
+	on roles_1.id = roles_employee.role_id 
+	join employees
+	on employees.id = roles_employee.employee_id
 		where role_name like '%Middle%';
 	
 --27. Вывести количество разработчиков
 	
-select count(role_name) as count_developer from role_name
-	left join 
-	
-	
+select count(role_name) as count_developer from roles_1
+	join roles_employee
+	on roles_1.id = roles_employee.role_id 
+	join employees
+	on employees.id = roles_employee.employee_id
 		where role_name like '%developer%';
 
 --28. Вывести фонд (сумму) зарплаты разработчиков.
 	
-select sum(salary_1.monthly_salary) as sum_salary_developer from emp_sal_rol
-	join salary_1
-	on sal_id = salary_1.id
+select sum(salary_1.monthly_salary) as sum_salary_developer from salary_1
+	join employee_salary
+	on salary_1.id = employee_salary.salary_id
+	join employees
+	on employees.id = employee_salary.employee_id
+	join roles_employee
+	on employees.id = roles_employee.employee_id 
 	join roles_1
-	on rol_id = roles_1.id
+	on roles_1.id = roles_employee.role_id 
 		where role_name like '%developer%' ;
 
 --29. Вывести имена, должности и ЗП всех специалистов по возрастанию
 
-select employee_name, role_name, salary_1.monthly_salary from emp_sal_rol
-	join employees
-	on emp_id = employees.id
+select employee_name, role_name, salary_1.monthly_salary from employees
+	join employee_salary
+	on employees.id = employee_salary.employee_id
 	join salary_1
-	on sal_id = salary_1.id
+	on salary_1.id = employee_salary.salary_id
+	join roles_employee
+	on roles_employee.employee_id = employees.id
 	join roles_1
-	on rol_id = roles_1.id
+	on roles_1.id = roles_employee.role_id 
 		order by (salary_1.monthly_salary) asc;
 	
 --30. Вывести имена, должности и ЗП всех специалистов по возрастанию у специалистов у которых ЗП от 1700 до 2300
 
-select employee_name, role_name, salary_1.monthly_salary from emp_sal_rol
-	join employees
-	on emp_id = employees.id
+select employee_name, role_name, salary_1.monthly_salary from employees
+	join employee_salary
+	on employees.id = employee_salary.employee_id
 	join salary_1
-	on sal_id = salary_1.id
+	on salary_1.id = employee_salary.salary_id
+	join roles_employee
+	on roles_employee.employee_id = employees.id
 	join roles_1
-	on rol_id = roles_1.id
+	on roles_1.id = roles_employee.role_id
 		where salary_1.monthly_salary between 1700 and 2300
 			order by (salary_1.monthly_salary) asc;
 	
 --31. Вывести имена, должности и ЗП всех специалистов по возрастанию у специалистов у которых ЗП меньше 2300
 		
-select employee_name, role_name, salary_1.monthly_salary from emp_sal_rol
-	join employees
-	on emp_id = employees.id
+select employee_name, role_name, salary_1.monthly_salary from employees
+	join employee_salary
+	on employees.id = employee_salary.employee_id
 	join salary_1
-	on sal_id = salary_1.id
+	on salary_1.id = employee_salary.salary_id
+	join roles_employee
+	on roles_employee.employee_id = employees.id
 	join roles_1
-	on rol_id = roles_1.id
+	on roles_1.id = roles_employee.role_id
 		where salary_1.monthly_salary<2300
 			order by (salary_1.monthly_salary) asc;
 
 --32. Вывести имена, должности и ЗП всех специалистов по возрастанию у специалистов у которых ЗП равна 1100, 1500, 2000
 		
-		select employee_name, role_name, salary_1.monthly_salary from emp_sal_rol
-	join employees
-	on emp_id = employees.id
+select employee_name, role_name, salary_1.monthly_salary from employees
+	join employee_salary
+	on employees.id = employee_salary.employee_id
 	join salary_1
-	on sal_id = salary_1.id
+	on salary_1.id = employee_salary.salary_id
+	join roles_employee
+	on roles_employee.employee_id = employees.id
 	join roles_1
-	on rol_id = roles_1.id
+	on roles_1.id = roles_employee.role_id
 		where salary_1.monthly_salary in (1100, 1500, 2000)
 			order by (salary_1.monthly_salary) asc;
