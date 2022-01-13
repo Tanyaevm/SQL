@@ -5,7 +5,7 @@ select * from salary_1;
 select * from employees;
 select * from employee_salary;
 
-select employee_id, employee_name, salary_1.monthly_salary, salary_id  from employees
+select employee_name, salary_1.monthly_salary  from employees
 	join employee_salary
 	on employees.id = employee_salary.employee_id
 	join salary_1 
@@ -13,7 +13,7 @@ select employee_id, employee_name, salary_1.monthly_salary, salary_id  from empl
 
 --2. Вывести всех работников у которых ЗП меньше 2000.
 
-select employee_id, employee_name, salary_1.monthly_salary, salary_id from employees
+select employee_name, salary_1.monthly_salary from employees
 	join employee_salary
 	on employees.id = employee_salary.employee_id
 	join salary_1
@@ -22,7 +22,7 @@ select employee_id, employee_name, salary_1.monthly_salary, salary_id from emplo
 
 --3. Вывести все зарплатные позиции, но работник по ним не назначен. (ЗП есть, но не понятно кто её получает.)
 	
-select employee_id, employee_name, salary_1.monthly_salary, salary_id from salary_1
+select employee_name, salary_id from salary_1
 	left join employee_salary
 	on salary_1.id = employee_salary.salary_id
 	left join employees
@@ -31,7 +31,7 @@ select employee_id, employee_name, salary_1.monthly_salary, salary_id from salar
 	
 --4. Вывести все зарплатные позиции  меньше 2000 но работник по ним не назначен. (ЗП есть, но не понятно кто её получает.)
 
-select employee_id, employee_name, salary_1.monthly_salary, salary_id from salary_1
+select employee_name, salary_1.monthly_salary from salary_1
 	left join employee_salary
 	on salary_1.id = employee_salary.salary_id
 	left join employees
@@ -40,7 +40,7 @@ select employee_id, employee_name, salary_1.monthly_salary, salary_id from salar
 	
 --5. Найти всех работников кому не начислена ЗП.
 	
-select employee_id, employee_name, salary_1.monthly_salary, salary_id from employees
+select employee_name, salary_1.monthly_salary from employees
 	left join employee_salary
 	on employees.id = employee_salary.employee_id
 	left join salary_1
@@ -52,7 +52,7 @@ select * from employees;
 select * from roles_1;
 select * from roles_employee;
 
-select employee_id, employee_name, role_name, role_id from employees
+select employee_name, role_name from employees
 	join roles_employee
 	on roles_employee.employee_id = employees.id
 	join roles_1
@@ -64,7 +64,7 @@ select * from employees;
 select * from roles_1;
 select * from roles_employee;
 
-select employee_id, employee_name, role_name, role_id from employees
+select employee_name, role_name from employees
 	join roles_employee
 	on roles_employee.employee_id = employees.id
 	join roles_1
@@ -73,7 +73,7 @@ select employee_id, employee_name, role_name, role_id from employees
 
 --8. Вывести имена и должность только Python разработчиков.
 
-select employee_id, employee_name, role_name, role_id from employees
+select employee_name, role_name from employees
 	join roles_employee
 	on roles_employee.employee_id = employees.id
 	join roles_1
@@ -82,7 +82,7 @@ select employee_id, employee_name, role_name, role_id from employees
 	
 --9. Вывести имена и должность всех QA инженеров.
 
-select employee_id, employee_name, role_name, role_id from employees
+select employee_name, role_name from employees
 	join roles_employee
 	on roles_employee.employee_id = employees.id
 	join roles_1
@@ -91,7 +91,7 @@ select employee_id, employee_name, role_name, role_id from employees
 
 --10. Вывести имена и должность ручных QA инженеров.
 
-select employee_id, employee_name, role_name, role_id from employees
+select employee_name, role_name from employees
 	join roles_employee
 	on roles_employee.employee_id = employees.id
 	join roles_1
@@ -100,7 +100,7 @@ select employee_id, employee_name, role_name, role_id from employees
 
 --11. Вывести имена и должность автоматизаторов QA
 
-select employee_id, employee_name, role_name, role_id from employees
+select employee_name, role_name from employees
 	join roles_employee
 	on roles_employee.employee_id = employees.id
 	join roles_1
@@ -110,7 +110,7 @@ select employee_id, employee_name, role_name, role_id from employees
 --12. Вывести имена и зарплаты Junior специалистов   
       
 	
-select employees.id, employee_name, salary_1.id, salary_1.monthly_salary, roles_1.id, role_name from employees
+select employee_name, salary_1.monthly_salary, role_name from employees
 	join employee_salary
 	on employees.id = employee_salary.employee_id 
 	join salary_1
@@ -124,7 +124,7 @@ select employees.id, employee_name, salary_1.id, salary_1.monthly_salary, roles_
 		 
 --13. Вывести имена и зарплаты Middle специалистов
 
-select employees.id, employee_name, salary_1.id, salary_1.monthly_salary, roles_1.id, role_name from employees
+select employee_name, salary_1.monthly_salary, role_name from employees
 	join employee_salary
 	on employees.id = employee_salary.employee_id 
 	join salary_1
@@ -137,7 +137,7 @@ select employees.id, employee_name, salary_1.id, salary_1.monthly_salary, roles_
 
 --14. Вывести имена и зарплаты Senior специалистов
 
-select employees.id, employee_name, salary_1.id, salary_1.monthly_salary, roles_1.id, role_name from employees
+select employee_name, salary_1.monthly_salary, role_name from employees
 	join employee_salary
 	on employees.id = employee_salary.employee_id 
 	join salary_1
@@ -150,7 +150,7 @@ select employees.id, employee_name, salary_1.id, salary_1.monthly_salary, roles_
 
 --15. Вывести зарплаты Java разработчиков   
 
-select salary_1.id, salary_1.monthly_salary, roles_1.id, role_name from salary_1
+select , salary_1.monthly_salary, role_name from salary_1
 	join employee_salary
 	on salary_1.id = employee_salary.salary_id 
 	join employees
@@ -163,7 +163,7 @@ select salary_1.id, salary_1.monthly_salary, roles_1.id, role_name from salary_1
 
 --16. Вывести зарплаты Python разработчиков
 
-select salary_1.id, salary_1.monthly_salary, roles_1.id, role_name from salary_1
+select salary_1.monthly_salary, role_name from salary_1
 	join employee_salary
 	on salary_1.id = employee_salary.salary_id 
 	join employees
@@ -176,7 +176,7 @@ select salary_1.id, salary_1.monthly_salary, roles_1.id, role_name from salary_1
 
 --17. Вывести имена и зарплаты Junior Python разработчиков
 
-select employees.id, employee_name, salary_1.id, salary_1.monthly_salary, roles_1.id, role_name from employees
+select employee_name, salary_1.monthly_salary, role_name from employees
 	join employee_salary
 	on employees.id = employee_salary.employee_id 
 	join salary_1
@@ -189,7 +189,7 @@ select employees.id, employee_name, salary_1.id, salary_1.monthly_salary, roles_
 
 --18. Вывести имена и зарплаты Middle JS разработчиков
 
-select employees.id, employee_name, salary_1.id, salary_1.monthly_salary, roles_1.id, role_name from employees
+select employee_name, salary_1.monthly_salary, role_name from employees
 	join employee_salary
 	on employees.id = employee_salary.employee_id 
 	join salary_1
@@ -202,7 +202,7 @@ select employees.id, employee_name, salary_1.id, salary_1.monthly_salary, roles_
 
 --19. Вывести имена и зарплаты Senior Java разработчиков
 
-select employees.id, employee_name, salary_1.id, salary_1.monthly_salary, roles_1.id, role_name from employees
+select employee_name, salary_1.monthly_salary, role_name from employees
 	join employee_salary
 	on employees.id = employee_salary.employee_id 
 	join salary_1
@@ -215,7 +215,7 @@ select employees.id, employee_name, salary_1.id, salary_1.monthly_salary, roles_
 
 --20. Вывести зарплаты Junior QA инженеров
 
-select salary_1.id, salary_1.monthly_salary, roles_1.id, role_name from salary_1
+select salary_1.monthly_salary, role_name from salary_1
 	join employee_salary
 	on salary_1.id = employee_salary.salary_id 
 	join employees
