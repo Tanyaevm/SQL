@@ -53,9 +53,9 @@ select * from roles;
 select * from roles_employee;
 
 select employee_name, role_name from employees
-	join roles_employee
+	left join roles_employee
 	on roles_employee.employee_id = employees.id
-	join roles
+	left join roles
 	on roles.id = roles_employee.role_id;
 
 --7. Вывести имена и должность только Java разработчиков.
@@ -111,13 +111,13 @@ select employee_name, role_name from employees
       
 	
 select employee_name, salary.monthly_salary, role_name from employees
-	join employee_salary
+	left join employee_salary
 	on employees.id = employee_salary.employee_id 
-	join salary
+	left join salary
 	on salary.id = employee_salary.salary_id
-	join roles_employee
+	left join roles_employee
 	on roles_employee.employee_id = employees.id
-	join roles
+	left join roles
 	on roles.id = roles_employee.role_id 
 		where role_name like '%Junior%';
 	
@@ -125,24 +125,24 @@ select employee_name, salary.monthly_salary, role_name from employees
 --13. Вывести имена и зарплаты Middle специалистов
 
 select employee_name, salary.monthly_salary, role_name from employees
-	join employee_salary
+	left join employee_salary
 	on employees.id = employee_salary.employee_id 
-	join salary
+	left join salary
 	on salary.id = employee_salary.salary_id
-	join roles_employee
+	left join roles_employee
 	on roles_employee.employee_id = employees.id
-	join roles
+	left join roles
 	on roles.id = roles_employee.role_id 
 		where role_name like '%Middle%';
 
 --14. Вывести имена и зарплаты Senior специалистов
 
 select employee_name, salary.monthly_salary, role_name from employees
-	join employee_salary
+	left join employee_salary
 	on employees.id = employee_salary.employee_id 
-	join salary
+	left join salary
 	on salary.id = employee_salary.salary_id
-	join roles_employee
+	left join roles_employee
 	on roles_employee.employee_id = employees.id
 	join roles
 	on roles.id = roles_employee.role_id 
@@ -150,79 +150,79 @@ select employee_name, salary.monthly_salary, role_name from employees
 
 --15. Вывести зарплаты Java разработчиков   
 
-select , salary.monthly_salary, role_name from salary
-	join employee_salary
+select employee_name, salary.monthly_salary, role_name from salary
+	left join employee_salary
 	on salary.id = employee_salary.salary_id 
-	join employees
+	left join employees
 	on employees.id = employee_salary.employee_id
-	join roles_employee
+	left join roles_employee
 	on roles_employee.employee_id = employees.id 
-	join roles
+	left join roles
 	on roles.id = roles_employee.role_id 
 		where role_name like '%Java%';
 
 --16. Вывести зарплаты Python разработчиков
 
-select salary_1.monthly_salary, role_name from salary
-	join employee_salary
+select salary.monthly_salary, role_name from salary
+	left join employee_salary
 	on salary.id = employee_salary.salary_id 
-	join employees
+	left join employees
 	on employees.id = employee_salary.employee_id
-	join roles_employee
+	left join roles_employee
 	on roles_employee.employee_id = employees.id 
-	join roles
+	left join roles
 	on roles.id = roles_employee.role_id
 		where role_name like '%Python%';
 
 --17. Вывести имена и зарплаты Junior Python разработчиков
 
 select employee_name, salary.monthly_salary, role_name from employees
-	join employee_salary
+	left join employee_salary
 	on employees.id = employee_salary.employee_id 
-	join salary
+	left join salary
 	on salary.id = employee_salary.salary_id
-	join roles_employee
+	left join roles_employee
 	on roles_employee.employee_id = employees.id
-	join roles
+	left join roles
 	on roles.id = roles_employee.role_id 
 		where role_name like '%Junior Python%';
 
 --18. Вывести имена и зарплаты Middle JS разработчиков
 
 select employee_name, salary.monthly_salary, role_name from employees
-	join employee_salary
+	left join employee_salary
 	on employees.id = employee_salary.employee_id 
-	join salary
+	left join salary
 	on salary.id = employee_salary.salary_id
-	join roles_employee
+	left join roles_employee
 	on roles_employee.employee_id = employees.id
-	join roles
+	left join roles
 	on roles.id = roles_employee.role_id 
 		where role_name like '%Middle JavaScript%';
 
 --19. Вывести имена и зарплаты Senior Java разработчиков
 
 select employee_name, salary.monthly_salary, role_name from employees
-	join employee_salary
+	left join employee_salary
 	on employees.id = employee_salary.employee_id 
-	join salary
+	left join salary
 	on salary.id = employee_salary.salary_id
-	join roles_employee
+	left join roles_employee
 	on roles_employee.employee_id = employees.id
-	join roles
+	left join roles
 	on roles.id = roles_employee.role_id 
 		where role_name like '%Senior Java %';
 
 --20. Вывести зарплаты Junior QA инженеров
 
 select salary.monthly_salary, role_name from salary
-	join employee_salary
+	left join employee_salary
 	on salary.id = employee_salary.salary_id 
-	join employees
+	left join employees
 	on employees.id = employee_salary.employee_id
-	join roles_employee
+	left join roles_employee
 	on roles_employee.employee_id = employees.id 
-	join roles
+	left join roles
 	on roles.id = roles_employee.role_id
 		where role_name like '%Junior%' and role_name like '%QA%';
 
@@ -254,7 +254,7 @@ select sum(salary.monthly_salary) as sum_salary from salary
 	
 --23. Вывести минимальную ЗП QA инженеров
 
-select min(salary_1.monthly_salary) as min_salary from salary
+select min(salary.monthly_salary) as min_salary from salary
 	join employee_salary
 	on salary.id = employee_salary.salary_id 
 	join employees
@@ -321,40 +321,40 @@ select sum(salary.monthly_salary) as sum_salary_developer from salary
 --29. Вывести имена, должности и ЗП всех специалистов по возрастанию
 
 select employee_name, role_name, salary.monthly_salary from employees
-	join employee_salary
+	left join employee_salary
 	on employees.id = employee_salary.employee_id
-	join salary
+	left join salary
 	on salary.id = employee_salary.salary_id
-	join roles_employee
+	left join roles_employee
 	on roles_employee.employee_id = employees.id
-	join roles
+	left join roles
 	on roles.id = roles_employee.role_id 
-		order by (salary_1.monthly_salary) asc;
+		order by (salary.monthly_salary) asc;
 	
 --30. Вывести имена, должности и ЗП всех специалистов по возрастанию у специалистов у которых ЗП от 1700 до 2300
 
 select employee_name, role_name, salary.monthly_salary from employees
-	join employee_salary
+	left join employee_salary
 	on employees.id = employee_salary.employee_id
-	join salary
+	left join salary
 	on salary.id = employee_salary.salary_id
-	join roles_employee
+	left join roles_employee
 	on roles_employee.employee_id = employees.id
-	join roles
+	left join roles
 	on roles.id = roles_employee.role_id
-		where salary_1.monthly_salary between 1700 and 2300
+		where salary.monthly_salary between 1700 and 2300
 			order by (salary.monthly_salary) asc;
 	
 --31. Вывести имена, должности и ЗП всех специалистов по возрастанию у специалистов у которых ЗП меньше 2300
 		
 select employee_name, role_name, salary.monthly_salary from employees
-	join employee_salary
+	left join employee_salary
 	on employees.id = employee_salary.employee_id
-	join salary
+	left join salary
 	on salary.id = employee_salary.salary_id
-	join roles_employee
+	left join roles_employee
 	on roles_employee.employee_id = employees.id
-	join roles
+	left join roles
 	on roles.id = roles_employee.role_id
 		where salary.monthly_salary<2300
 			order by (salary.monthly_salary) asc;
@@ -362,13 +362,13 @@ select employee_name, role_name, salary.monthly_salary from employees
 --32. Вывести имена, должности и ЗП всех специалистов по возрастанию у специалистов у которых ЗП равна 1100, 1500, 2000
 		
 select employee_name, role_name, salary.monthly_salary from employees
-	join employee_salary
+	left join employee_salary
 	on employees.id = employee_salary.employee_id
-	join salary
+	left join salary
 	on salary.id = employee_salary.salary_id
-	join roles_employee
+	left join roles_employee
 	on roles_employee.employee_id = employees.id
-	join roles
+	left join roles
 	on roles.id = roles_employee.role_id
 		where salary.monthly_salary in (1100, 1500, 2000)
 			order by (salary.monthly_salary) asc;
